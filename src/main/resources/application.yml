@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+# Add a new top-level property for our application settings
+application:
+  # IMPORTANT: In a real production app, this secret should come from a secure
+  # environment variable or a secrets manager, NOT be hard-coded here.
+  # This should be a long, random base64-encoded string.
+  jwt:
+    secret-key: NGI0ZDEyN2UwYjI3ZGNjM2E0YjQ0ZTA5ZGRmYjRiYjM4ZjcwZjgxZmQ0YjQ0ZTA5ZGRmYjRiYjM4ZjcwZjgxZmQ0YjQ0ZTA5ZGRmYjRiYjM4ZjcwZjgxZmQ0YjQ0ZTA5ZGRmYjRiYjM4ZjcwZjgxZmQ=
+
+# Spring DataSource Configuration
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hotelierpro # The location of our database
+    username: postgres # The user we configured
+    password: poi # The password you set
+  # Spring JPA/Hibernate Configuration
+  jpa:
+    hibernate:
+      # We use 'update' for development. Hibernate will manage the schema.
+      ddl-auto: update
+    # This will show us the actual SQL queries Hibernate generates in the console.
+    # It's very useful for debugging.
+    show-sql: true
+    properties:
+      hibernate:
+        # This formats the SQL shown in the console to be more readable.
+        format_sql: true
+
+      # MongoDB Configuration
+      data:
+        mongodb:
+          # The connection string for our local Docker container.
+          # The database 'hotelierpro' will be created automatically on first connection.
+          uri: mongodb://localhost:27017/hotelierpro
+

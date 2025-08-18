@@ -1,0 +1,13 @@
+spring:
+  # PostgreSQL configuration will be read from an environment variable provided by Render.
+  # The name of the variable is DATABASE_URL.
+  datasource:
+    url: ${DATABASE_URL}
+  # MongoDB configuration will be read from our custom environment variable.
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+  # For production, we want Hibernate to validate the schema, not change it.
+  jpa:
+    hibernate:
+      ddl-auto: validate
